@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flames Trivia</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <style>
+        html {
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background: linear-gradient(to right, rgb(248, 45, 45), yellow)
+        }
+        main {
+            margin: 0rem auto 2rem auto;
+            max-width: 650px;
+        }
+        h1, h2, h3, footer {
+            text-align: center;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @font-face {
+            font-family: 'nhl_flamesregular';
+            src: url('nhl_flames.woff2') format('woff2'),
+                url('nhl_flames.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        h1 {
+            font-family: 'nhl_flamesregular';
+            font-size: 7rem;
+            text-decoration: underline;
+            text-transform: uppercase;
+            margin-bottom: 1%;
+        }
+        h2 {
+            font-size: 26px;
+            font-weight:700;
+        }
+        div {
+            padding: 0px 0 0px 0;
+        }
+        p {
+            font-size: 26px;
+            font-weight: 700;
+        }
+        input {
+            margin-left: 15px;
+        }
+        label {
+            font-size: 23px;
+            font-weight: 500;
+            text-align: center;
+        }
+        button {
+            background: white;
+            border-color: black;
+            border-radius: 1rem;
+            border-width: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 3rem;
+            margin-top: 2rem;
+            padding: 0 7px;
+        }
+        button:hover {
+            color: white;
+            background: black;
+            border-color: white;
+            border-width: 5px;
+        }
+        div > button {
+            line-height: 2rem;
+        }
+        #reset {
+            float: right;
+        }
+        #submit {
+            margin: 2% 0 0% 0%;
+        }
+        #backToTop {
+            float: right;
+            margin: 2% 0% 0% 2%;
+        }
+        .message {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 4rem;
+            padding: 5% 0% 5% 0%;
+        }
+        .results {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+        }
+        ul {
+            list-style: none;
+        }
+        footer {
+            font-family:fantasy;
+            font-size: 3rem;
+            font-style: oblique;
+            margin-top: 2rem;
+        }
+    </style>
+    <main>
+    <h1>Flames Trivia</h1>
+    <img src="https://cdn.freebiesupply.com/logos/large/2x/calgary-flames-logo.png" alt="Flames Logo" width="200" class="center">
+    <h2>Welcome to the Calgary Flames trivia challenge.</h2>
+    <h3>Answer these questions to see how well you know the Flames.</h3>
+    <button type="button" id="reset">Reset All</button>
+    <button type="button" id="background">Change Background</button>
+    <form id="form">
+        <div>
+            <p>1. What year were the Flames founded (in what year was the team created in Atlanta)?</p>
+            <input type="radio" id="1a" name="q1" value="A"><label id="L1a" for="1a">A) 1952</label>
+            <input type="radio" id="1b" name="q1" value="B"><label id="L1b" for="1b">B) 1972</label>
+            <input type="radio" id="1c" name="q1" value="C"><label id="L1c" for="1c">C) 1982</label>
+            <input type="radio" id="1d" name="q1" value="D"><label id="L1d" for="1d">D) 1962</label>
+            <div id="divC1"><button type="button" id="check1">Check Answer</button></div>
+        </div>
+        <div>
+            <p>2. During their 8 seasons in Atlanta, how many times did the Flames qualify for the playoffs?</p>
+            <input type="radio" id="2a" name="q2" value="A"><label id="L2a" for="2a">A) 4</label>
+            <input type="radio" id="2b" name="q2" value="B"><label id="L2b" for="2b">B) 2</label>
+            <input type="radio" id="2c" name="q2" value="C"><label id="L2c" for="2c">C) 0</label>
+            <input type="radio" id="2d" name="q2" value="D"><label id="L2d" id="L1a" for="2d">D) 6</label>
+            <div id="divC2"><button type="button" id="check2">Check Answer</button></div>
+        </div>
+        <div>
+            <p>3. What is the name of the Calgary Flames mascot?</p>
+            <input type="radio" id="3a" name="q3" value="A"><label id="L3a" for="3a">A) Smoky</label>
+            <input type="radio" id="3b" name="q3" value="B"><label id="L3b" for="3b">B) Cody</label>
+            <input type="radio" id="3c" name="q3" value="C"><label id="L3c" for="3c">C) Harvey</label>
+            <input type="radio" id="3d" name="q3" value="D"><label id="L3d" for="3d">D) Sparky</label>
+            <div id="divC3"><button type="button" id="check3">Check Answer</button></div>
+        </div>
+        <div>
+            <p>4. What was the first jersey number retired (stopped being used) by the Flames?</p>
+            <input type="radio" id="4a" name="q4" value="A"><label id="L4a" for="4a">A) #9</label>
+            <input type="radio" id="4b" name="q4" value="B"><label id="L4b" for="4b">B) #30</label>
+            <input type="radio" id="4c" name="q4" value="C"><label id="L4c" for="4c">C) #18</label>
+            <input type="radio" id="4d" name="q4" value="D"><label id="L4d" for="4d">D) #12</label>
+            <div id="divC4"><button type="button" id="check4">Check Answer</button></div>
+        </div>
+        <div>
+            <p>5. Who did the Flames defeat to win their first Stanley Cup championship?</p>
+            <input type="radio" id="5a" name="q5" value="A"><label id="L5a" for="5a">A) Tampa Bay Lightning</label>
+            <input type="radio" id="5b" name="q5" value="B"><label id="L5b" for="5b">B) Boston Bruins</label>
+            <input type="radio" id="5c" name="q5" value="C"><label id="L5c" for="5c">C) Montreal Canadiens</label>
+            <input type="radio" id="5d" name="q5" value="D"><label id="L5d" for="5d">D) Pittsburgh Penguins</label>
+            <div id="divC5"><button type="button" id="check5">Check Answer</button></div>
+        </div>
+        <div>
+            <p>6. Who was the first Flames player to lead the league in goals and points?</p>
+            <input type="radio" id="6a" name="q6" value="A"><label id="L6a" for="6a">A) Lanny McDonald</label>
+            <input type="radio" id="6b" name="q6" value="B"><label id="L6b" for="6b">B) Jarome Iginla</label>
+            <input type="radio" id="6c" name="q6" value="C"><label id="L6c" for="6c">C) Joe Nieuwendyk</label>
+            <input type="radio" id="6d" name="q6" value="D"><label id="L6d" for="6d">D) Gary Roberts</label>
+            <div id="divC6"><button type="button" id="check6">Check Answer</button></div>
+        </div>
+        <div>
+            <p>7. Which player was nicknamed "Killer"?</p>
+            <input type="radio" id="7a" name="q7" value="A"><label id="L7a" for="7a">A) Doug Gilmour</label>
+            <input type="radio" id="7b" name="q7" value="B"><label id="L7b" for="7b">B) Hakan Loob</label>
+            <input type="radio" id="7c" name="q7" value="C"><label id="L7c" for="7c">C) Joe Mullen</label>
+            <input type="radio" id="7d" name="q7" value="D"><label id="L7d" for="7d">D) Joe Nieuwendyk</label>
+            <div id="divC7"><button type="button" id="check7">Check Answer</button></div>
+        </div>
+        <div>
+            <p>8. Which Flames player won NHL Rookie of the Year at age 31?</p>
+            <input type="radio" id="8a" name="q8" value="A"><label id="L8a" for="8a">A) Gary Suter</label>
+            <input type="radio" id="8b" name="q8" value="B"><label id="L8b" for="8b">B) Joe Nieuwendyk</label>
+            <input type="radio" id="8c" name="q8" value="C"><label id="L8c" for="8c">C) Eric Vail</label>
+            <input type="radio" id="8d" name="q8" value="D"><label id="L8d" for="8d">D) Sergei Makarov</label>
+            <div id="divC8"><button type="button" id="check8">Check Answer</button></div>
+        </div>
+        <div>
+            <p>9. In what round did the Calgary Flames draft Theoren Fleury?</p>
+            <input type="radio" id="9a" name="q9" value="A"><label id="L9a" for="9a">A) 6th round</label>
+            <input type="radio" id="9b" name="q9" value="B"><label id="L9b" for="9b">B) 4th round</label>
+            <input type="radio" id="9c" name="q9" value="C"><label id="L9c" for="9c">C) 2nd round</label>
+            <input type="radio" id="9d" name="q9" value="D"><label id="L9d" for="9d">D) 8th round</label>
+            <div id="divC9"><button type="button" id="check9">Check Answer</button></div>
+        </div>
+        <div id="div20">
+            <p>20. Which Flames player scored 5 goals in one game?</p>
+            <input type="radio" id="20a" name="q20" value="A"><label id="L20a" for="20a">A) Jarome Iginla</label>
+            <input type="radio" id="20b" name="q20" value="B"><label id="L20b" for="20b">B) Lanny McDonald</label>
+            <input type="radio" id="20c" name="q20" value="C"><label id="L20c" for="20c">C) Guy Chouinard</label>
+            <input type="radio" id="20d" name="q20" value="D"><label id="L20d" for="20d">D) Joe Nieuwendyk</label>
+            <div id="lastCheck"><button type="button" id="check20">Check Answer</button></div>
+        </div>
+        <button id="submit" type="button">Submit Answers</button>
+        <button id="backToTop" type="button">Back to Top</button>
+        </form>
+        </main>
+    <script>
+        // VARIABLE DECLARATIONS
+        const body = document.querySelector('body'),
+            submit = document.getElementById('submit'),
+            toTop = document.getElementById('backToTop'),
+            reset = document.getElementById("reset"),
+            background = document.getElementById("background"),
+            check1 = document.getElementById("check1"),
+            check2 = document.getElementById("check2"),
+            check3 = document.getElementById("check3"),
+            check4 = document.getElementById("check4"),
+            check5 = document.getElementById("check5"),
+            check6 = document.getElementById("check6"),
+            check7 = document.getElementById("check7"),
+            check8 = document.getElementById("check8"),
+            check9 = document.getElementById("check9"),
+            check20 = document.getElementById("check20"),
+            answerKey = ['B', 'D', 'C', 'A', 'C', 
+                        'B', 'A', 'D', 'D', 'C', 
+                        'A', 'B', 'A', 'C', 'D', 
+                        'B', 'A', 'C', 'B', 'D'],
+            ul1 = document.createElement('ul'),
+            ul2 = document.createElement('ul'),
+            checkMark = "\u2705", redCross = "\u274C";
+            let numWrong = 0, message;
+        // CHECK FUNCTION INPUT DATA
+        const checkFunc1 = () => {
+            const input = document.forms.form.elements.q1.value;
+            if (input === 'A') document.getElementById('L1a').append(redCross);
+            if (input === 'C') document.getElementById('L1c').append(redCross);
+            if (input === 'D') document.getElementById('L1d').append(redCross);
+            document.getElementById('L1b').append(checkMark);}
+        const checkFunc2 = () => {
+            const input = document.forms.form.elements.q2.value;
+            if (input === 'A') document.getElementById('L2a').append(redCross);
+            if (input === 'B') document.getElementById('L2b').append(redCross);
+            if (input === 'C') document.getElementById('L2c').append(redCross);
+            document.getElementById('L2d').append(checkMark);}
+        const checkFunc3 = () => {
+            const input = document.forms.form.elements.q3.value;
+            if (input === 'A') document.getElementById('L3a').append(redCross);
+            if (input === 'B') document.getElementById('L3b').append(redCross);
+            if (input === 'D') document.getElementById('L3d').append(redCross);
+            document.getElementById('L3c').append(checkMark);}
+        const checkFunc4 = () => {
+            const input = document.forms.form.elements.q4.value;
+            if (input === 'B') document.getElementById('L4b').append(redCross);
+            if (input === 'C') document.getElementById('L4c').append(redCross);
+            if (input === 'D') document.getElementById('L4d').append(redCross);
+            document.getElementById('L4a').append(checkMark);}
+        const checkFunc5 = () => {
+            const input = document.forms.form.elements.q5.value;
+            if (input === 'A') document.getElementById('L5a').append(redCross);
+            if (input === 'B') document.getElementById('L5b').append(redCross);
+            if (input === 'D') document.getElementById('L5d').append(redCross);
+            document.getElementById('L5c').append(checkMark);}
+        const checkFunc6 = () => {
+            const input = document.forms.form.elements.q6.value;
+            if (input === 'A') document.getElementById('L6a').append(redCross);
+            if (input === 'C') document.getElementById('L6c').append(redCross);
+            if (input === 'D') document.getElementById('L6d').append(redCross);
+            document.getElementById('L6b').append(checkMark);}
+        const checkFunc7 = () => {
+            const input = document.forms.form.elements.q7.value;
+            if (input === 'B') document.getElementById('L7b').append(redCross);
+            if (input === 'C') document.getElementById('L7c').append(redCross);
+            if (input === 'D') document.getElementById('L7d').append(redCross);
+            document.getElementById('L7a').append(checkMark);}
+        const checkFunc8 = () => {
+            const input = document.forms.form.elements.q8.value;
+            if (input === 'A') document.getElementById('L8a').append(redCross);
+            if (input === 'B') document.getElementById('L8b').append(redCross);
+            if (input === 'C') document.getElementById('L8c').append(redCross);
+            document.getElementById('L8d').append(checkMark);}
+        const checkFunc9 = () => {
+            const input = document.forms.form.elements.q9.value;
+            if (input === 'A') document.getElementById('L9a').append(redCross);
+            if (input === 'B') document.getElementById('L9b').append(redCross);
+            if (input === 'C') document.getElementById('L9c').append(redCross);
+            document.getElementById('L9d').append(checkMark);}
+        const checkFunc20 = () => {
+            const input = document.forms.form.elements.q20.value;
+            if (input === 'A') document.getElementById('L20a').append(redCross);
+            if (input === 'B') document.getElementById('L20b').append(redCross);
+            if (input === 'C') document.getElementById('L20c').append(redCross);
+            document.getElementById('L20d').append(checkMark);}
+        // SUBMIT ANSWERS BUTTON FUNCTION
+        const submitAnswers = () => {
+            const input1 = document.forms.form.elements.q1.value,
+            input2 = document.forms.form.elements.q2.value,
+            input3 = document.forms.form.elements.q3.value,
+            input4 = document.forms.form.elements.q4.value,
+            input5 = document.forms.form.elements.q5.value,
+            input6 = document.forms.form.elements.q6.value,
+            input7 = document.forms.form.elements.q7.value,
+            input8 = document.forms.form.elements.q8.value,
+            input9 = document.forms.form.elements.q9.value,
+            input20 = document.forms.form.elements.q20.value;
+        // USERS ANSWERS ARRAY
+        const usersAnswers = [input1, input2, input3, input4,
+                            input5, input6, input7, input8, 
+                            input9, input20]
+        // CREATE LISTS OF CORRECT/INCORRECT ANSWERS
+        for (let i=0; i<10; i++) {
+            const li = document.createElement('li');
+            let corrText, incorrText;
+            if (usersAnswers[i] === answerKey[i]) {
+                if (i < 9) {
+                    corrText = document.createTextNode(`0${i+1}. ${usersAnswers[i]}`);    
+                } else {
+                    corrText = document.createTextNode(`${i+1}. ${usersAnswers[i]}`);
+                }
+                li.appendChild(corrText);
+                ul1.appendChild(li);
+            } else {
+                if (i < 9) {
+                    incorrText = document.createTextNode(`0${i+1}. Answered: ${usersAnswers[i]} || Correct Answer: ${answerKey[i]}`);
+                } else {
+                    incorrText = document.createTextNode(`${i+1}. Answered: ${usersAnswers[i]} || Correct Answer: ${answerKey[i]}`);
+                }
+                li.appendChild(incorrText);
+                ul2.appendChild(li);
+                numWrong++;
+            }
+        }
+        // 20 POSSIBLE SCORE MESSAGES
+        switch (numWrong) {
+        case 10:
+            message = document.createTextNode("Score: 0%! Oh dear."); break;
+        case 9:
+            message = document.createTextNode("Score: 10%! At least you got one right."); break;
+        case 8:
+            message = document.createTextNode("Score: 20%! Nice try dude."); break;
+        case 7:
+            message = document.createTextNode("Score: 30%! That's a respectable result."); break;
+        case 6:
+            message = document.createTextNode("Score: 40%! Good job friend."); break;
+        case 5:
+            message = document.createTextNode("Score: 50%! A very good effort indeed."); break;
+        case 4:
+            message = document.createTextNode("Score: 60%! I'm impressed."); break;
+        case 3:
+            message = document.createTextNode("Score: 70%! You're a trivia buff."); break;
+        case 2:
+            message = document.createTextNode("Score: 80%! Wow, you know your stuff."); break;
+        case 1:
+            message = document.createTextNode("Score: 90%! Almost aced it."); break;
+        case 0:
+            message = document.createTextNode("Score: 100%! You're a genius!"); break;
+      }
+       // APPEND CORRECT ANSWERS
+        const appendDiv = document.querySelector('#div20'), 
+        divCorrect = document.createElement('div'),
+        userCorrect = document.createTextNode("Correct Answers: ");
+        divCorrect.setAttribute('class', 'results');
+        divCorrect.append(userCorrect, ul1);
+        if (numWrong < 20) {
+            appendDiv.appendChild(divCorrect);
+        }
+        // APPEND INCORRECT ANSWERS
+        const divIncorrect = document.createElement('div'), 
+        userIncorrect = document.createTextNode("Incorrect Answers: ");
+        divIncorrect.setAttribute('class', 'results');
+        divIncorrect.append(userIncorrect, ul2);
+        if (numWrong > 0) {
+            appendDiv.appendChild(divIncorrect);
+        }
+        // APPEND RESULTS + MESSAGE
+        const divMessage = document.createElement('div'), 
+        classMessage = divMessage.setAttribute('class', 'message');
+        divMessage.appendChild(message);
+        appendDiv.appendChild(divMessage);
+        // APPEND FOOTER THANKS MESSAGE
+        const footerThanks = document.createElement('footer'), 
+        classThanks = footerThanks.setAttribute('class', 'thanks'),
+        messageThanks = document.createTextNode("Thanks for playing Kieran!");
+        footerThanks.appendChild(messageThanks);
+        appendDiv.appendChild(footerThanks);
+    }
+    // SCROLL MESSAGE INTO VIEW
+    const scrollToBottom = () => {
+        window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
+    }
+    // SCROLL BACK TO TOP
+    const scrollToTop = () => {
+        window.scrollTo({ left: 0, top:0, behavior: "smooth" });
+    }
+    // RANDOM BACKGROUND GENERATOR BUTTON
+    const componentToHex = (c) => {
+    const hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+    }
+    const rgbToHex = (r,g,b) => {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+    const backgroundButton = () => {
+        function randomNum(maxLimit = 256) {
+            let num = Math.random() * maxLimit;
+            num = Math.floor(num);
+            return num;
+        }
+        const rhex1 = rgbToHex(randomNum(),randomNum(),randomNum()), 
+            rhex2 = rgbToHex(randomNum(),randomNum(),randomNum());
+        color1 = rhex1;
+        color2 = rhex2;
+        randomGradient(color1,color2);
+    };
+    const randomGradient = (c1,c2) => {
+        body.style.background = 'linear-gradient(to right, ' + c1 + ',' + c2 + ')';
+    }
+    check1.addEventListener('click', checkFunc1, {once: true});
+    check2.addEventListener('click', checkFunc2, {once: true});
+    check3.addEventListener('click', checkFunc3, {once: true});
+    check4.addEventListener('click', checkFunc4, {once: true});
+    check5.addEventListener('click', checkFunc5, {once: true});
+    check6.addEventListener('click', checkFunc6, {once: true});
+    check7.addEventListener('click', checkFunc7, {once: true});
+    check8.addEventListener('click', checkFunc8, {once: true});
+    check9.addEventListener('click', checkFunc9, {once: true});
+    check20.addEventListener('click', checkFunc20, {once: true});
+    background.addEventListener('click', backgroundButton);
+    reset.addEventListener('click', location.reload.bind(location));
+    submit.addEventListener('click', submitAnswers, {once: true});
+    submit.addEventListener('click', scrollToBottom);
+    toTop.addEventListener('click', scrollToTop);
+    </script>
+</body>
+</html>
